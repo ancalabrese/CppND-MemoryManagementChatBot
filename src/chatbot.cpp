@@ -32,22 +32,57 @@ ChatBot::ChatBot(std::string filename) {
 //Copy ctor
 ChatBot::ChatBot(ChatBot &chatBot) {
     std::cout << "ChatBot cpoy constructor" << std::endl;
+    delete _image;
+    _image = chatBot._image;
+    chatBot._image = NULL;
+    _currentNode = chatBot._currentNode;
+    _rootNode = chatBot._rootNode;
+    _chatLogic = chatBot._chatLogic;
 }
 
 //Move ctor
 ChatBot::ChatBot(ChatBot &&chatBot) {
     std::cout << "ChatBot move constructor" << std::endl;
+    delete _image;
+    _image = chatBot._image;
+    chatBot._image = NULL;
+    _currentNode = chatBot._currentNode;
+    chatBot._currentNode = nullptr;
+    _rootNode = chatBot._rootNode;
+    chatBot._rootNode = nullptr;
+    _chatLogic = chatBot._chatLogic;
+    chatBot._chatLogic = nullptr;
 }
 
 //Copy assigment op
-ChatBot &ChatBot::operator=(ChatBot &ChatBot) {
+ChatBot &ChatBot::operator=(ChatBot &chatBot) {
     std::cout << "ChatBot copy assigment operator" << std::endl;
+    if (this == &chatBot) {
+        return *this;
+    }
+    delete _image;
+    _image = chatBot._image;
+    chatBot._image = NULL;
+    _currentNode = chatBot._currentNode;
+    _rootNode = chatBot._rootNode;
+    _chatLogic = chatBot._chatLogic;
     return *this;
 }
 
 //Move assigment op
-ChatBot &ChatBot::operator=(ChatBot &&ChatBot) {
+ChatBot &ChatBot::operator=(ChatBot &&chatBot) {
     std::cout << "ChatBot move assigment operator" << std::endl;
+    if (this == &chatBot) {
+        return *this;
+    }
+   _image = chatBot._image;
+    chatBot._image = NULL;
+    _currentNode = chatBot._currentNode;
+    chatBot._currentNode = nullptr;
+    _rootNode = chatBot._rootNode;
+    chatBot._rootNode = nullptr;
+    _chatLogic = chatBot._chatLogic;
+    chatBot._chatLogic = nullptr;
     return *this;
 }
 

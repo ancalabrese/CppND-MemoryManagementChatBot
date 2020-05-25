@@ -9,7 +9,7 @@
 #include "graphedge.h"
 #include "graphnode.h"
 
-// constructor WITHOUT memory allocation
+// empty ctor
 ChatBot::ChatBot() {
     // invalidate data handles
     _image = nullptr;
@@ -17,7 +17,7 @@ ChatBot::ChatBot() {
     _rootNode = nullptr;
 }
 
-// constructor WITH memory allocation
+// image ctor
 ChatBot::ChatBot(std::string filename) {
     std::cout << "ChatBot Constructor" << std::endl;
 
@@ -75,7 +75,7 @@ ChatBot &ChatBot::operator=(ChatBot &&chatBot) {
     if (this == &chatBot) {
         return *this;
     }
-   _image = chatBot._image;
+    _image = chatBot._image;
     chatBot._image = NULL;
     _currentNode = chatBot._currentNode;
     chatBot._currentNode = nullptr;
@@ -96,12 +96,6 @@ ChatBot::~ChatBot() {
         _image = NULL;
     }
 }
-
-//// STUDENT CODE
-////
-
-////
-//// EOF STUDENT CODE
 
 void ChatBot::ReceiveMessageFromUser(std::string message) {
     // loop over all edges and keywords and compute Levenshtein distance to query

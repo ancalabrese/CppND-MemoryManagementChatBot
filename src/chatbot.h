@@ -25,10 +25,10 @@ class ChatBot {
     // constructors / destructors
     ChatBot();                      // constructor WITHOUT memory allocation
     ChatBot(std::string filename);  // constructor WITH memory allocation
-    ChatBot(ChatBot &chatBot);      // cpoy constructor
+    ChatBot(ChatBot &chatBot);      // copy constructor
     ChatBot(ChatBot &&chatBot);     // move constructor
-    ChatBot &operator=(ChatBot &ChatBot); // copy assignment op
-    ChatBot &operator=(ChatBot &&ChatBot); // move assignment op
+    ChatBot &operator=(const ChatBot &ChatBot); // copy assignment op
+    ChatBot &operator=(const ChatBot &&ChatBot); // move assignment op
     ~ChatBot();
 
     // getters / setters

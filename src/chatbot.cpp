@@ -11,6 +11,7 @@
 
 // empty ctor
 ChatBot::ChatBot() {
+    std::cout << "ChatBot no initialization constructor" << std::endl;
     // invalidate data handles
     _image = nullptr;
     _chatLogic = nullptr;
@@ -55,14 +56,13 @@ ChatBot::ChatBot(ChatBot &&chatBot) {
 }
 
 //Copy assigment op
-ChatBot &ChatBot::operator=(ChatBot &chatBot) {
+ChatBot &ChatBot::operator=(const ChatBot &chatBot) {
     std::cout << "ChatBot copy assigment operator" << std::endl;
     if (this == &chatBot) {
         return *this;
     }
     delete _image;
     _image = chatBot._image;
-    chatBot._image = NULL;
     _currentNode = chatBot._currentNode;
     _rootNode = chatBot._rootNode;
     _chatLogic = chatBot._chatLogic;
@@ -70,19 +70,16 @@ ChatBot &ChatBot::operator=(ChatBot &chatBot) {
 }
 
 //Move assigment op
-ChatBot &ChatBot::operator=(ChatBot &&chatBot) {
+ChatBot &ChatBot::operator=(const ChatBot &&chatBot) {
     std::cout << "ChatBot move assigment operator" << std::endl;
     if (this == &chatBot) {
         return *this;
     }
     _image = chatBot._image;
-    chatBot._image = NULL;
     _currentNode = chatBot._currentNode;
-    chatBot._currentNode = nullptr;
     _rootNode = chatBot._rootNode;
-    chatBot._rootNode = nullptr;
     _chatLogic = chatBot._chatLogic;
-    chatBot._chatLogic = nullptr;
+
     return *this;
 }
 

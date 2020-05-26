@@ -20,7 +20,7 @@ class GraphNode {
 
     // data handles (not owned)
     std::vector<GraphEdge *> _parentEdges;  // edges to preceding nodes
-    std::unique_ptr<ChatBot> _chatBot;
+    ChatBot _chatBot;
 
     ////
     //// EOF STUDENT CODE
@@ -45,7 +45,7 @@ class GraphNode {
     void AddToken(std::string token);  // add answers to list
     void AddEdgeToParentNode(GraphEdge *edge);
     void AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge);
-    void MoveChatbotHere(std::unique_ptr<ChatBot> chatbot);
+    void MoveChatbotHere(ChatBot chatBot);
     void MoveChatbotToNewNode(GraphNode *newNode);
 };
 
